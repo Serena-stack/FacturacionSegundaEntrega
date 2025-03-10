@@ -21,7 +21,7 @@ public class Cliente {
     private String documento;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<factura> facturas;
+    private List<Factura> facturas;
 
     // Constructor vacío
     public Cliente() {}
@@ -39,7 +39,7 @@ public class Cliente {
     public String getDocumento() { return documento; }
     public void setDocumento(String documento) { this.documento = documento; }
 
-    public List<factura> getFacturas() { return facturas; }
-    public void setFacturas(List<factura> facturas) { this.facturas = facturas; }
+    public List<Factura> getFacturas() { return facturas; }
+    public void setFacturas(List<Factura> facturas) { this.facturas = facturas; }
 }
 

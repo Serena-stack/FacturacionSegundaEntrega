@@ -3,12 +3,10 @@ package com.facturacion.jpa.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-import com.facturacion.jpa.entity.DetalleFactura;
-
 
 @Entity
 @Table(name = "facturas")
-public class factura {
+public class Factura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,11 +18,11 @@ public class factura {
     @Column(nullable = false)
     private LocalDateTime fecha;
 
-    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<DetalleFactura> detalles;
 
     // Constructor vacío
-    public factura() {
+    public Factura() {
         this.fecha = LocalDateTime.now();
     }
 
@@ -41,3 +39,4 @@ public class factura {
     public List<DetalleFactura> getDetalles() { return detalles; }
     public void setDetalles(List<DetalleFactura> detalles) { this.detalles = detalles; }
 }
+
